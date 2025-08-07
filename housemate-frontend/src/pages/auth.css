@@ -117,6 +117,22 @@ html, body, #root {
   margin-bottom: 10px;
 }
 
+.auth-form-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.auth-form-row .auth-half-input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
 .auth-form label {
   font-size: 0.95rem;
   color: #000000;
@@ -136,6 +152,12 @@ html, body, #root {
   margin-bottom: 2px;
   transition: border 0.2s;
   color: #000; /* Ensure input text is black */
+}
+
+.auth-form input[type="text"].auth-half-input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .auth-form input:focus {
@@ -179,7 +201,8 @@ html, body, #root {
   gap: 4px;
 }
 
-.auth-remember input[type="checkbox"] {
+.auth-remember input[type="checkbox"],
+.auth-agree input[type="checkbox"] {
   accent-color: #fff;
   background: #fff;
   border: 1.5px solid #000;
@@ -194,12 +217,14 @@ html, body, #root {
   position: relative;
 }
 
-.auth-remember input[type="checkbox"]:checked {
+.auth-remember input[type="checkbox"]:checked,
+.auth-agree input[type="checkbox"]:checked {
   background: #fff;
   border: 1.5px solid #000;
 }
 
-.auth-remember input[type="checkbox"]:after {
+.auth-remember input[type="checkbox"]:after,
+.auth-agree input[type="checkbox"]:after {
   content: '';
   display: block;
   width: 10px;
@@ -211,7 +236,8 @@ html, body, #root {
   transition: opacity 0.1s;
 }
 
-.auth-remember input[type="checkbox"]:checked:after {
+.auth-remember input[type="checkbox"]:checked:after,
+.auth-agree input[type="checkbox"]:checked:after {
   opacity: 1;
 }
 

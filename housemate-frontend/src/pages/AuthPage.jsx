@@ -5,6 +5,7 @@ import './auth.css';
 function AuthPage() {
   const [tab, setTab] = useState('signin');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
 
   return (
@@ -83,43 +84,108 @@ function AuthPage() {
                 </button>
               </form>
             ) : (
-              <form className="auth-form">
-                <label>Username</label>
-                <input type="text" placeholder="Enter your username" required />
-                <label>Email Address</label>
-                <input type="email" placeholder="Enter your email" required />
-                <label>Password</label>
-                <div className="auth-password">
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Enter your password"
-                    required
-                  />
-                  <span
-                    className="auth-eye"
-                    onClick={() => setShowPassword(v => !v)}
-                    title={showPassword ? "Hide password" : "Show password"}
-                    style={{ userSelect: 'none' }}
-                  >
-                    {showPassword ? (
-                      // Open eye SVG
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
-                        <circle cx="10" cy="10" r="1.8" fill="#888"/>
-                      </svg>
-                    ) : (
-                      // Closed eye SVG
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
-                        <line x1="5" y1="15" x2="15" y2="5" stroke="#888" strokeWidth="1.5"/>
-                      </svg>
-                    )}
-                  </span>
-                </div>
-                <button className="auth-main-btn" type="submit">
-                  Sign Up to HouseMate
-                </button>
-              </form>
+              <>
+               
+                <form className="auth-form" style={{ overflowX: 'hidden' }}>
+                  <div className="auth-form-row" style={{ minWidth: 0 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        className="auth-half-input"
+                        placeholder="Enter your first name"
+                        required
+                        style={{ minWidth: 0, maxWidth: '100%' }}
+                      />
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        className="auth-half-input"
+                        placeholder="Enter your last name"
+                        required
+                        style={{ minWidth: 0, maxWidth: '100%' }}
+                      />
+                    </div>
+                  </div>
+                  <label>Email Address</label>
+                  <input type="email" placeholder="Enter your email" required />
+                  <label>Password</label>
+                  <div className="auth-password">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Enter your password"
+                      required
+                    />
+                    <span
+                      className="auth-eye"
+                      onClick={() => setShowPassword(v => !v)}
+                      title={showPassword ? "Hide password" : "Show password"}
+                      style={{ userSelect: 'none' }}
+                    >
+                      {showPassword ? (
+                        // Open eye SVG
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                          <circle cx="10" cy="10" r="1.8" fill="#888"/>
+                        </svg>
+                      ) : (
+                        // Closed eye SVG
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                          <line x1="5" y1="15" x2="15" y2="5" stroke="#888" strokeWidth="1.5"/>
+                        </svg>
+                      )}
+                    </span>
+                  </div>
+                  <label>Confirm Password</label>
+                  <div className="auth-password">
+                    <input
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      placeholder="Confirm your password"
+                      required
+                    />
+                    <span
+                      className="auth-eye"
+                      onClick={() => setShowConfirmPassword(v => !v)}
+                      title={showConfirmPassword ? "Hide password" : "Show password"}
+                      style={{ userSelect: 'none' }}
+                    >
+                      {showConfirmPassword ? (
+                        // Open eye SVG
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                          <circle cx="10" cy="10" r="1.8" fill="#888"/>
+                        </svg>
+                      ) : (
+                        // Closed eye SVG
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                          <line x1="5" y1="15" x2="15" y2="5" stroke="#888" strokeWidth="1.5"/>
+                        </svg>
+                      )}
+                    </span>
+                  </div>
+                  <div className="auth-agree" style={{ display: 'flex', alignItems: 'center', marginTop: 8, marginBottom: 8 }}>
+                    <input type="checkbox" id="agree" required />
+                    <label htmlFor="agree" style={{ fontSize: '0.95rem', color: '#888', marginBottom: 0 }}>
+                      I agree to the <a href="#" style={{ color: '#7b8fff' }}>Terms of Service</a>
+                      and <a href="#" style={{ color: '#7b8fff' }}>Privacy Policy</a>
+                    </label>
+                  </div>
+                  <button className="auth-main-btn" type="submit" style={{
+                    marginTop: 10,
+                    marginBottom: 0,
+                    fontWeight: 600,
+                    fontSize: '1.08rem',
+                    background: 'linear-gradient(90deg, #7b8fff 0%, #a084ee 100%)',
+                    boxShadow: '0 4px 24px 0 rgba(80, 80, 160, 0.10)'
+                  }}>
+                    Create HouseMate Account
+                  </button>
+                </form>
+              </>
             )}
           </>
         ) : (
