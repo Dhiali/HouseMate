@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './auth.css';
 import HouseMateLogo from '../assets/HouseMate logo.png';
+import './auth.css';
 
 function AuthPage() {
   const [tab, setTab] = useState('signin');
@@ -45,7 +45,22 @@ function AuthPage() {
                 className="auth-eye"
                 onClick={() => setShowPassword(v => !v)}
                 title={showPassword ? "Hide password" : "Show password"}
-              >👁️</span>
+                style={{ userSelect: 'none' }}
+              >
+                {showPassword ? (
+                  // Open eye SVG
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="1.8" fill="#888"/>
+                  </svg>
+                ) : (
+                  // Closed eye SVG
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                    <line x1="5" y1="15" x2="15" y2="5" stroke="#888" strokeWidth="1.5"/>
+                  </svg>
+                )}
+              </span>
             </div>
             <div className="auth-row">
               <label className="auth-remember">
@@ -74,7 +89,22 @@ function AuthPage() {
                 className="auth-eye"
                 onClick={() => setShowPassword(v => !v)}
                 title={showPassword ? "Hide password" : "Show password"}
-              >👁️</span>
+                style={{ userSelect: 'none' }}
+              >
+                {showPassword ? (
+                  // Open eye SVG
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="1.8" fill="#888"/>
+                  </svg>
+                ) : (
+                  // Closed eye SVG
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <ellipse cx="10" cy="10" rx="7" ry="4" stroke="#888" strokeWidth="1.5" fill="none"/>
+                    <line x1="5" y1="15" x2="15" y2="5" stroke="#888" strokeWidth="1.5"/>
+                  </svg>
+                )}
+              </span>
             </div>
             <button className="auth-main-btn" type="submit">
               Sign Up to HouseMate
@@ -82,9 +112,7 @@ function AuthPage() {
           </form>
         )}
       
-        <div className="auth-policy">
-          By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-        </div>
+    
       </div>
       <div className="auth-footer">
         By continuing, you agree to our
